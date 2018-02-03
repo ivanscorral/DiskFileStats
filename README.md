@@ -39,23 +39,22 @@ extensionFile.writeExtensionReport();
 
 The output is:
 
-```
------15 BIGGEST FILES REPORT [MB, MiB]-----
-00000.m2ts - 40457,3676 MB, 38583,1524 MiB
-The Place Beyond the Pines.mkv - 26048,6832 MB, 24841,9601 MiB
-Marvels.The.Defenders.S01E08.The.Defenders.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7996,3352 MB, 7625,8995 MiB
-Marvels.The.Defenders.S01E06.Ashes.Ashes.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7954,8079 MB, 7586,296 MiB
-Marvels.The.Defenders.S01E07.Fish.In.The.Jailhouse.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7099,9287 MB, 6771,0196 MiB
-00017.m2ts - 5727,4061 MB, 5462,0801 MiB
-00021.m2ts - 5228,0095 MB, 4985,8184 MiB
-00011.m2ts - 4283,4248 MB, 4084,9922 MiB
-00031.m2ts - 4104,5545 MB, 3914,4083 MiB
-VID_20180116_162924.mp4 - 3905,0717 MB, 3724,1666 MiB
-marvels.the.defenders.s01e08.1080p.webrip.x264-strife.mkv - 3269,2889 MB, 3117,8368 MiB
-00015.m2ts - 3088,7117 MB, 2945,625 MiB
-marvels.the.defenders.s01e06.1080p.webrip.x264-strife.mkv - 3087,6664 MB, 2944,6282 MiB
-marvels.the.defenders.s01e07.1080p.webrip.x264-strife.mkv - 2867,5301 MB, 2734,6898 MiB
-marvels.the.defenders.s01e05.1080p.webrip.x264-strife.mkv - 2798,2843 MB, 2668,6519 MiB
+```-----15 BIGGEST FILES REPORT [GB, GiB]-----
+00000.m2ts - 40,4574 GB, 37,6789 GiB
+The Place Beyond the Pines.mkv - 26,0487 GB, 24,2598 GiB
+Marvels.The.Defenders.S01E08.The.Defenders.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7,9964 GB, 7,4472 GiB
+Marvels.The.Defenders.S01E06.Ashes.Ashes.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7,9549 GB, 7,4085 GiB
+Marvels.The.Defenders.S01E07.Fish.In.The.Jailhouse.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7,1 GB, 6,6124 GiB
+00017.m2ts - 5,7275 GB, 5,3341 GiB
+00021.m2ts - 5,2281 GB, 4,869 GiB
+00011.m2ts - 4,2835 GB, 3,9893 GiB
+00031.m2ts - 4,1046 GB, 3,8227 GiB
+VID_20180116_162924.mp4 - 3,9051 GB, 3,6369 GiB
+marvels.the.defenders.s01e08.1080p.webrip.x264-strife.mkv - 3,2693 GB, 3,0448 GiB
+00015.m2ts - 3,0888 GB, 2,8766 GiB
+marvels.the.defenders.s01e06.1080p.webrip.x264-strife.mkv - 3,0877 GB, 2,8757 GiB
+marvels.the.defenders.s01e07.1080p.webrip.x264-strife.mkv - 2,8676 GB, 2,6706 GiB
+marvels.the.defenders.s01e05.1080p.webrip.x264-strife.mkv - 2,7983 GB, 2,6062 GiB
 
 -----FILE EXTENSION REPORT-----
 rb1 - 1
@@ -105,7 +104,7 @@ certs - 1
 ijm - 90
 url - 4
 docx - 5
-txt - 50
+txt - 52
 config - 2
 CPN - 2
 data - 1
