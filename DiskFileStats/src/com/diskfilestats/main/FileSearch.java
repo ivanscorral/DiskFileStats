@@ -13,27 +13,30 @@ public class FileSearch {
 	 * un ArrayList<String> vacío.
 	 */
 	
-	public static ArrayList<String> searchFiles(File directory){
-		return r_searchFiles(directory, new ArrayList<String>());
+	public static ArrayList<File> searchFiles(File directory){
+		return r_searchFiles(directory, new ArrayList<File>());
 	}
 	
 	/**
 	 * Llamada recursiva oculta.
 	 */
 	
-	private static ArrayList<String> r_searchFiles(File search, ArrayList<String> found){
-		ArrayList<String> result = new ArrayList<String>();
+	private static ArrayList<File> r_searchFiles(File search, ArrayList<File> found){
+		ArrayList<File> result = new ArrayList<File>();
 		
 		if(search.isDirectory()) {
 			//copy parameter to temporal variable
 			result.addAll(found);
-			result.add(search.getAbsolutePath() + " - Carpeta");
+			//add this folder
+			result.add(search);
 			
 			for(File f : search.listFiles()) {
 				if(f.isDirectory()) {
+					//recursive call
 					result = r_searchFiles(f, result);
 				}else {
-					result.add(f.getAbsolutePath() + " - Archivo");
+					//add file
+					result.add(f);
 				}
 			}
 		}
