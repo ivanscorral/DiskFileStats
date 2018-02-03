@@ -40,22 +40,22 @@ extensionFile.writeExtensionReport();
 The output is:
 
 ```
------15 BIGGEST FILES REPORT [GB, GiB]-----
-00000.m2ts - 40.457367552 GB, 37.67885971069336 GiB
-The Place Beyond the Pines.mkv - 26.048683146 GB, 24.259726652875543 GiB
-Marvels.The.Defenders.S01E08.The.Defenders.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7.996335123 GB, 7.447167414240539 GiB
-Marvels.The.Defenders.S01E07.Fish.In.The.Jailhouse.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7.099928632 GB, 6.612323813140392 GiB
-marvels.the.defenders.s01e07.1080p.webrip.x264-strife.mkv - 2.86753004 GB, 2.670595459640026 GiB
-black.mirror.s04e02.internal.1080p.web.x264-strife.mkv - 1.339238444 GB, 1.2472629956901073 GiB
-black.mirror.s04e06.internal.1080p.web.x264-strife.mkv - 1.287609982 GB, 1.19918024353683 GiB
-black.mirror.s04e04.internal.1080p.web.x264-strife.mkv - 0.892184865 GB, 0.8309119055047631 GiB
-BlckMrrr201 [www.newpct.com].avi - 0.548400452 GB, 0.5107377208769321 GiB
-Black Mirror 4x05 [www.newpct1.com].avi - 0.504805376 GB, 0.4701366424560547 GiB
-BlackMirror203 [www.newpct.com].avi - 0.482987724 GB, 0.44981737062335014 GiB
-00034.m2ts - 0.132360192 GB, 0.12327003479003906 GiB
-PLAYERUNKNOWN'S BATTLEGROUNDS 01.28.2018 - 23.42.34.01.mp4 - 0.086856435 GB, 0.08089135866612196 GiB
-SicilianSveshnikov.pgn - 0.013580813 GB, 0.01264811772853136 GiB
-SicilianAlapin2Nf6.pgn - 0.01178517 GB, 0.010975794866681099 GiB
+-----15 BIGGEST FILES REPORT [MB, MiB]-----
+00000.m2ts - 40457,3676 MB, 38583,1524 MiB
+The Place Beyond the Pines.mkv - 26048,6832 MB, 24841,9601 MiB
+Marvels.The.Defenders.S01E08.The.Defenders.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7996,3352 MB, 7625,8995 MiB
+Marvels.The.Defenders.S01E06.Ashes.Ashes.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7954,8079 MB, 7586,296 MiB
+Marvels.The.Defenders.S01E07.Fish.In.The.Jailhouse.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7099,9287 MB, 6771,0196 MiB
+00017.m2ts - 5727,4061 MB, 5462,0801 MiB
+00021.m2ts - 5228,0095 MB, 4985,8184 MiB
+00011.m2ts - 4283,4248 MB, 4084,9922 MiB
+00031.m2ts - 4104,5545 MB, 3914,4083 MiB
+VID_20180116_162924.mp4 - 3905,0717 MB, 3724,1666 MiB
+marvels.the.defenders.s01e08.1080p.webrip.x264-strife.mkv - 3269,2889 MB, 3117,8368 MiB
+00015.m2ts - 3088,7117 MB, 2945,625 MiB
+marvels.the.defenders.s01e06.1080p.webrip.x264-strife.mkv - 3087,6664 MB, 2944,6282 MiB
+marvels.the.defenders.s01e07.1080p.webrip.x264-strife.mkv - 2867,5301 MB, 2734,6898 MiB
+marvels.the.defenders.s01e05.1080p.webrip.x264-strife.mkv - 2798,2843 MB, 2668,6519 MiB
 
 -----FILE EXTENSION REPORT-----
 rb1 - 1
@@ -105,7 +105,7 @@ certs - 1
 ijm - 90
 url - 4
 docx - 5
-txt - 36
+txt - 50
 config - 2
 CPN - 2
 data - 1
