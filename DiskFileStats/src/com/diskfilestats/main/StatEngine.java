@@ -21,21 +21,17 @@ public class StatEngine {
 		HashMap<String, Integer> result = new HashMap<String, Integer>();
 		//Config variables
 		String NO_EXTENSION = "<no extension>";
-		int MAX_EXTENSION_LENGTH = 11;
-		
-		for(File f : data) {
-			
+		int MAX_EXTENSION_LENGTH = 11;		
+		for(File f : data) {			
 			if(!f.isDirectory()) {				
 				String filename = f.getName().trim();
 				String[] name = filename.split("\\.");
-				String extension;
-				
+				String extension;				
 				if(name.length > 1) {
 					extension = name[name.length-1];
 				}else {
 					extension = NO_EXTENSION;
-				}
-				
+				}				
 				if(extension.length() < MAX_EXTENSION_LENGTH) {					
 					if(result.get(extension) != null) {						
 						int count = 1 + result.get(extension);
@@ -47,6 +43,5 @@ public class StatEngine {
 			}
 		}		
 		return result;
-	}
-	
+	}	
 }
