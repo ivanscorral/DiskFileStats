@@ -23,6 +23,14 @@ This class processes the file array found by the **FileSearch** class. It has 2 
 
 This acts as a buffer class between the user and StatEngine and its 2 methods write StatEngine's data to a formatted given file.
 
+## TODO
+
+- [ ] Write biggest folder algorithm and report methods.
+- [ ] Add a graphical interface.
+- [x] Write main recursive file search algorithm.
+- [x] Write file extension algorithm and report methods.
+- [x] Write biggest file algorithm and report methods.
+
 ## Example:
 
 This code reads all subfolders in F:\\ and generates a report to F:\\informes.txt with extension and filesize infos.
@@ -39,7 +47,8 @@ extensionFile.writeExtensionReport();
 
 The output is:
 
-```-----15 BIGGEST FILES REPORT [GB, GiB]-----
+```
+-----15 BIGGEST FILES REPORT [GB, GiB]-----
 00000.m2ts - 40,4574 GB, 37,6789 GiB
 The Place Beyond the Pines.mkv - 26,0487 GB, 24,2598 GiB
 Marvels.The.Defenders.S01E08.The.Defenders.1080p.NF.WEBRip.DD5.1.x264-GoodPeople.mkv - 7,9964 GB, 7,4472 GiB
@@ -149,35 +158,6 @@ PLS - 1
 cib2 - 11
 json - 6
 class - 27
-player - 1
-jpg - 2151
-inf - 1
-htm - 5
-cbb - 9
-cba - 190
-crt - 4
-ini - 235
-dll - 74
-src - 1
-cbc - 191
-ttf - 8
-cbe - 193
-CKN - 2
-libraries - 1
-cbh - 191
-cbg - 191
-cbj - 193
-cbl - 15
-wav - 4
-cbm - 43
-cbp - 191
-mp4 - 8
-pdf - 3
-cbt - 191
-srt - 4
-cbs - 191
-pf - 5
-cbv - 1
-properties - 24
+<file continues...>
 ```
 
