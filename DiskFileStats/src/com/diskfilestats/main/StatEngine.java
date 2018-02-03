@@ -21,18 +21,19 @@ public class StatEngine {
 		HashMap<String, Integer> result = new HashMap<String, Integer>();
 		//Config variables
 		String NO_EXTENSION = "<no extension>";
-		int MAX_EXTENSION_LENGTH = 11;		
-		for(File f : data) {			
+		int MAX_EXTENSION_LENGTH = 11;	
+		
+		for(File f : data) {	
 			if(!f.isDirectory()) {				
 				String filename = f.getName().trim();
 				String[] name = filename.split("\\.");
-				String extension;				
+				String extension;
+				
 				if(name.length > 1) {
 					extension = name[name.length-1];
 				}else {
 					extension = NO_EXTENSION;
-				}				
-				if(extension.length() < MAX_EXTENSION_LENGTH) {					
+				}if(extension.length() < MAX_EXTENSION_LENGTH) {					
 					if(result.get(extension) != null) {						
 						int count = 1 + result.get(extension);
 						result.put(extension, count);
@@ -43,5 +44,28 @@ public class StatEngine {
 			}
 		}		
 		return result;
+	}
+	
+	public File[] getBiggestFiles(int number){
+		File[] biggestFiles = new File[number];
+		
+		for(File f : data) {	
+			if(!f.isDirectory()) {			
+				long fileSize = f.length();
+				for(int i = 0; i < biggestFiles.length; i++) {
+					if(biggestFiles[i] == null) {
+						biggestFiles[i] = f;
+						break;
+					}else {
+						if(biggestFiles[i].length() < fileSize) {
+							biggestFiles[i] = f;
+							break;
+						}
+					}
+				}
+			}
+		}	
+
+		return biggestFiles;
 	}	
 }

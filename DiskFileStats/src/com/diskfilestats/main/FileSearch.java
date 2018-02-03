@@ -29,14 +29,18 @@ public class FileSearch {
 			//add this folder
 			result.add(search);
 			
-			for(File f : search.listFiles()) {
-				if(f.isDirectory()) {
-					//recursive call
-					result = r_searchFiles(f, result);
-				}else {
-					//add file
-					result.add(f);
+			if(search.listFiles() != null) {
+				for(File f : search.listFiles()) {
+					if(f.isDirectory()) {
+						//recursive call
+						result = r_searchFiles(f, result);
+					}else {
+						//add file
+						result.add(f);
+					}
 				}
+			}else {
+				System.out.println("LOG: Can't read " + search.getPath() + "!");
 			}
 		}
 		
