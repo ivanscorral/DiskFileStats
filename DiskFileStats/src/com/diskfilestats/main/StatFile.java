@@ -3,6 +3,8 @@ package com.diskfilestats.main;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -56,8 +58,10 @@ public class StatFile {
 				double converted0 = size / Math.pow(1000, unit);
 				double converted1 = size / Math.pow(1024, unit);
 				
+				DecimalFormat df = new DecimalFormat("#.####");
+				df.setRoundingMode(RoundingMode.CEILING);				
 				
-				toWrite += f.getName() + " - " + converted0 + " " + units[unit][0] + ", "+ converted1 + " " + units[unit][1] + System.getProperty("line.separator");
+				toWrite += f.getName() + " - " + df.format(converted0) + " " + units[unit][0] + ", "+ df.format(converted1) + " " + units[unit][1] + System.getProperty("line.separator");
 			}
 		}
 		

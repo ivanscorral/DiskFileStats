@@ -2,6 +2,8 @@ package com.diskfilestats.main;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class StatEngine {
@@ -47,25 +49,24 @@ public class StatEngine {
 	}
 	
 	public File[] getBiggestFiles(int number){
+		ArrayList<File> files = new ArrayList<File>();
+		files.addAll(data);
 		File[] biggestFiles = new File[number];
 		
-		for(File f : data) {	
-			if(!f.isDirectory()) {			
-				long fileSize = f.length();
-				for(int i = 0; i < biggestFiles.length; i++) {
-					if(biggestFiles[i] == null) {
-						biggestFiles[i] = f;
-						break;
-					}else {
-						if(biggestFiles[i].length() < fileSize) {
-							biggestFiles[i] = f;
-							break;
-						}
-					}
-				}
-			}
-		}	
+		Collections.sort(files, new Comparator<File>() {
 
+			@Override
+			public int compare(File o1, File o2) {
+				double a = o2.length() - o1.length();
+				return (int)Math.signum(a);
+			}
+			
+		});
+		
+		for(int i = 0; i < number; i++) {
+			biggestFiles[i] = files.get(i);
+		}
+		
 		return biggestFiles;
 	}	
 }
