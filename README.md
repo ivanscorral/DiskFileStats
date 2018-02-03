@@ -13,7 +13,7 @@ There are 3 main classes:
 
 This class searchs for all the files and folders contained in the specified folder *searchFiles(File directory)* method.
 
-#### tatEngine
+#### StatEngine
 
 This class processes the file array found by the **FileSearch** class. It has 2 methods (for now):
 - ```public HashMap<String, Integer> getFileExtensionStats()``` **Returns a hashmap with file extensions and ocurrences**
@@ -29,13 +29,12 @@ This code reads all subfolders in F:\\ and generates a report to F:\\informes.tx
 
 ```java
 File directory = new File("F:\\");
-		ArrayList<File> data = FileSearch.searchFiles(directory);
+ArrayList<File> data = FileSearch.searchFiles(directory);
 		
-		StatEngine statEngine = new StatEngine(data);
-		
-		StatFile extensionFile = new StatFile("F:\\informes.txt", statEngine);
-		extensionFile.writeBiggestFilesReport(15, StatFile.UNIT_GIGABYTES);
-		extensionFile.writeExtensionReport();
+StatEngine statEngine = new StatEngine(data);
+StatFile extensionFile = new StatFile("F:\\informes.txt", statEngine);
+extensionFile.writeBiggestFilesReport(15, StatFile.UNIT_GIGABYTES);
+extensionFile.writeExtensionReport();
 ```
 
 The output is:
