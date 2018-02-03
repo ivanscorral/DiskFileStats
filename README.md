@@ -1,33 +1,33 @@
 # DiskFileStats
 Disk file statistics in Java.
 
-##About
+## About
 
 This is is a simple Java application that processes disk file information and is able to generate reports (txt files) of it.
 
-##Usage
+## Usage
 
 There are 3 main classes:
 
-####FileSearch
+#### FileSearch
 
 This class searchs for all the files and folders contained in the specified folder *searchFiles(File directory)* method.
 
-####StatEngine
+#### tatEngine
 
 This class processes the file array found by the **FileSearch** class. It has 2 methods (for now):
-⋅⋅*public HashMap<String, Integer> getFileExtensionStats() **Returns a hashmap with file extensions and ocurrences**
-⋅⋅*public File[] getBiggestFiles(int number) **Returns array of biggest files (upto number variable)**
+- ```public HashMap<String, Integer> getFileExtensionStats()``` **Returns a hashmap with file extensions and ocurrences**
+- ```public File[] getBiggestFiles(int number)``` **Returns array of biggest files (upto number variable)**
 
-####StatFile
+#### StatFile
 
 This acts as a buffer class between the user and StatEngine and its 2 methods write StatEngine's data to a formatted given file.
 
-##Example:
+## Example:
 
 This code reads all subfolders in F:\\ and generates a report to F:\\informes.txt with extension and filesize infos.
 
-´´´java
+```java
 File directory = new File("F:\\");
 		ArrayList<File> data = FileSearch.searchFiles(directory);
 		
@@ -36,11 +36,11 @@ File directory = new File("F:\\");
 		StatFile extensionFile = new StatFile("F:\\informes.txt", statEngine);
 		extensionFile.writeBiggestFilesReport(15, StatFile.UNIT_GIGABYTES);
 		extensionFile.writeExtensionReport();
-´´´
+```
 
 The output is:
 
-´´´
+```
 -----15 BIGGEST FILES REPORT [GB, GiB]-----
 00000.m2ts - 40.457367552 GB, 37.67885971069336 GiB
 The Place Beyond the Pines.mkv - 26.048683146 GB, 24.259726652875543 GiB
@@ -181,5 +181,5 @@ cbs - 191
 pf - 5
 cbv - 1
 properties - 24
-´´´
+```
 
