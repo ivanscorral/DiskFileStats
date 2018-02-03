@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class FileSearch {
 	
-	
 	/**
 	 * Llamada pública.
 	 * @param Directorio en el que buscar.
