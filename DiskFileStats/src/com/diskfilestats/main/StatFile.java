@@ -54,14 +54,16 @@ public class StatFile {
 			}
 		}else {
 			for(File f : data) {
-				long size = f.length();
-				double converted0 = size / Math.pow(1000, unit);
-				double converted1 = size / Math.pow(1024, unit);
-				
-				DecimalFormat df = new DecimalFormat("#.####");
-				df.setRoundingMode(RoundingMode.CEILING);				
-				
-				toWrite += f.getName() + " - " + df.format(converted0) + " " + units[unit][0] + ", "+ df.format(converted1) + " " + units[unit][1] + System.getProperty("line.separator");
+				if(f != null && f.isFile()) {
+					long size = f.length();
+					double converted0 = size / Math.pow(1000, unit);
+					double converted1 = size / Math.pow(1024, unit);
+					
+					DecimalFormat df = new DecimalFormat("#.####");
+					df.setRoundingMode(RoundingMode.CEILING);				
+					
+					toWrite += f.getName() + " - " + df.format(converted0) + " " + units[unit][0] + ", "+ df.format(converted1) + " " + units[unit][1] + System.getProperty("line.separator");
+				}
 			}
 		}
 		

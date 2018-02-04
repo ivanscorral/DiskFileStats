@@ -9,9 +9,13 @@ import java.util.HashMap;
 public class StatEngine {
 	
 	private ArrayList<File> data;
+	private static HashMap<File, String> extensions;
 		
 	public StatEngine(ArrayList<File> data) {
 		this.data = data;
+		if(extensions == null) {
+			extensions = getFilesAndExtensions();
+		}
 	}
 	
 	/**
@@ -21,30 +25,17 @@ public class StatEngine {
 	*/
 	public HashMap<String, Integer> getFileExtensionStats(){
 		HashMap<String, Integer> result = new HashMap<String, Integer>();
-		//Config variables
-		String NO_EXTENSION = "<no extension>";
-		int MAX_EXTENSION_LENGTH = 11;	
 		
-		for(File f : data) {	
-			if(!f.isDirectory()) {				
-				String filename = f.getName().trim();
-				String[] name = filename.split("\\.");
-				String extension;
-				
-				if(name.length > 1) {
-					extension = name[name.length-1];
-				}else {
-					extension = NO_EXTENSION;
-				}if(extension.length() < MAX_EXTENSION_LENGTH) {					
-					if(result.get(extension) != null) {						
-						int count = 1 + result.get(extension);
-						result.put(extension, count);
-					}else {
-						result.put(extension, 1);
-					}	
-				}
+		for(String extension : extensions.values()) {
+			if(result.containsKey(extension)) {
+				int count = 1 + result.get(extension);
+				result.put(extension, count);
+			}else {
+				result.put(extension, 1);
 			}
-		}		
+		}
+		
+		
 		return result;
 	}
 	
@@ -63,10 +54,36 @@ public class StatEngine {
 			
 		});
 		
-		for(int i = 0; i < number; i++) {
-			biggestFiles[i] = files.get(i);
+		for(int i = 0; i < biggestFiles.length; i++) {
+			if(i < files.size()) {
+				biggestFiles[i] = files.get(i);
+			}
 		}
 		
 		return biggestFiles;
 	}	
+
+	private HashMap<File, String> getFilesAndExtensions(){
+		HashMap<File, String> result = new HashMap<File, String>();
+		String NO_EXTENSION = "<no extension>";
+		int MAX_EXTENSION_LENGTH = 11;	
+		
+		for(File f : data) {	
+			if(!f.isDirectory()) {				
+				String filename = f.getName().trim();
+				String[] name = filename.split("\\.");
+				String extension;
+				
+				if(name.length > 1) {
+					extension = name[name.length-1];
+				}else {
+					extension = NO_EXTENSION;
+				}if(extension.length() < MAX_EXTENSION_LENGTH) {					
+					result.put(f, extension);	
+				}
+			}
+		}	
+		return result;
+	}
+
 }
