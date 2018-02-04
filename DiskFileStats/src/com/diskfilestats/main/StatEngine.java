@@ -63,6 +63,22 @@ public class StatEngine {
 		return biggestFiles;
 	}	
 
+	public File[] getFilesWithExtension(String extension) {
+		ArrayList<File> result = new ArrayList<File>();
+		File[] files = new File[0];
+		if(extensions.containsValue(extension)) {
+			for(File f : extensions.keySet()) {
+				if(extensions.get(f).equals(extension)) {
+					result.add(f);
+				}
+			}
+			
+			return result.toArray(files);
+		}else {
+			return new File[0];
+		}
+	}
+	
 	private HashMap<File, String> getFilesAndExtensions(){
 		HashMap<File, String> result = new HashMap<File, String>();
 		String NO_EXTENSION = "<no extension>";

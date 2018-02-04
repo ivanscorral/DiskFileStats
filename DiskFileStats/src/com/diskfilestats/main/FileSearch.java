@@ -23,7 +23,8 @@ public class FileSearch {
 	private static ArrayList<File> r_searchFiles(File search, ArrayList<File> found){
 		ArrayList<File> result = new ArrayList<File>();
 		
-		if(search.isDirectory()) {
+		//ignore folders starting with $ (recycling bin.. etc)		
+		if(search.isDirectory() && !search.getName().startsWith("$")) {
 			//copy parameter to temporal variable
 			result.addAll(found);
 			//add this folder

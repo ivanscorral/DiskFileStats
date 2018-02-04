@@ -14,16 +14,30 @@ public class StatFile {
 	private File statFile;
 	private StatEngine statEngine;
 	
+	private DecimalFormat df2;
+	private DecimalFormat df4;
+	
 	public static final int UNIT_BYTES = 0;
 	public static final int UNIT_KILOBYTES = 1;
 	public static final int UNIT_MEGABYTES = 2;
 	public static final int UNIT_GIGABYTES = 3;
 
 	private String[][] units = {{"B"}, {"kB", "KiB"},{"MB", "MiB"}, {"GB", "GiB"}};
+	
+	//Initialize DecimalFormats
+	
+	{	
+			df2 = new DecimalFormat("#.##");
+			df4 = new DecimalFormat("#.####");
+			df2.setRoundingMode(RoundingMode.CEILING);		
+			df4.setRoundingMode(RoundingMode.CEILING);		
+	}
 
 	
 	public StatFile(String path, StatEngine statEngine) {
 		statFile = new File(path);
+		if(statFile.exists()) statFile.delete();
+		
 		this.statEngine = statEngine;
 	}
 	
@@ -55,20 +69,45 @@ public class StatFile {
 		}else {
 			for(File f : data) {
 				if(f != null && f.isFile()) {
-					long size = f.length();
-					double converted0 = size / Math.pow(1000, unit);
-					double converted1 = size / Math.pow(1024, unit);
+					double[] fileSizes = getConvertedFileSize(f, unit);
 					
-					DecimalFormat df = new DecimalFormat("#.####");
-					df.setRoundingMode(RoundingMode.CEILING);				
-					
-					toWrite += f.getName() + " - " + df.format(converted0) + " " + units[unit][0] + ", "+ df.format(converted1) + " " + units[unit][1] + System.getProperty("line.separator");
+					toWrite += f.getName() + " - " + df4.format(fileSizes[0]) + " " + units[unit][0] + ", "+ df4.format(fileSizes[1]) + " " + units[unit][1] + System.getProperty("line.separator");
 				}
 			}
 		}
 		
+		
 		write(toWrite);
 		
+	}
+
+	public void writeFilesByExtension(String extension) {
+		String toWrite = "-----FILES FOUND WITH ." + extension + " EXTENSION-----" + System.getProperty("line.separator");
+		File[] files = statEngine.getFilesWithExtension(extension);
+		
+		for(File f : files) {
+			double[] fileSizes = getConvertedFileSize(f, UNIT_MEGABYTES);
+			DecimalFormat df = new DecimalFormat("#.####");
+			df.setRoundingMode(RoundingMode.CEILING);	
+			toWrite += f.getAbsolutePath() + " (" + df2.format(fileSizes[0]) + units[UNIT_MEGABYTES][0] +"/" + df2.format(fileSizes[1]) + units[UNIT_MEGABYTES][0] + ")" + System.getProperty("line.separator");
+		}
+		
+		write(toWrite);
+	
+	}
+	
+	public double[] getConvertedFileSize(File f, int unit) {
+		double[] result = new double[2];
+		if(unit == UNIT_BYTES) {
+			result[0] = f.length();
+			result[1] = f.length();
+		}else {
+			if(f != null && f.isFile()) {
+				long size = f.length();
+				result[0] = size / Math.pow(1000, unit);
+				result[1] = size / Math.pow(1024, unit);					
+			}
+		}return result;
 	}
 	
 	private void write(String toWrite) {
