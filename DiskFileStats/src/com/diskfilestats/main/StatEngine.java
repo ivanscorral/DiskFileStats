@@ -39,6 +39,11 @@ public class StatEngine {
 		return result;
 	}
 	
+	/** 
+	 * @param number Número de archivos a mostrar
+	 * @return Devuelve los archivos más grandes (hasta n = number).
+	 */
+	
 	public File[] getBiggestFiles(int number){
 		ArrayList<File> files = new ArrayList<File>();
 		files.addAll(data);
@@ -61,7 +66,12 @@ public class StatEngine {
 		}
 		
 		return biggestFiles;
-	}	
+	}
+	
+	/**
+	 * @param extension: Extensión a buscar.
+	 * @return Devuelve los archivos encontrados con esa extensión.
+	 */
 
 	public File[] getFilesWithExtension(String extension) {
 		ArrayList<File> result = new ArrayList<File>();
@@ -78,6 +88,9 @@ public class StatEngine {
 			return new File[0];
 		}
 	}
+	
+	
+	//TODO Rehacer estrucura de datos a una que permita manipulación de datos más eficiente.
 	
 	private HashMap<File, String> getFilesAndExtensions(){
 		HashMap<File, String> result = new HashMap<File, String>();
