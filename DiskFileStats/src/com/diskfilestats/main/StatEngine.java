@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class StatEngine {
 	
 	private ArrayList<File> data;
-	private static HashMap<File, String> extensions;
+	private static HashMap<String, ArrayList<File>> extensions;
 		
 	public StatEngine(ArrayList<File> data) {
 		this.data = data;
@@ -26,15 +26,9 @@ public class StatEngine {
 	public HashMap<String, Integer> getFileExtensionStats(){
 		HashMap<String, Integer> result = new HashMap<String, Integer>();
 		
-		for(String extension : extensions.values()) {
-			if(result.containsKey(extension)) {
-				int count = 1 + result.get(extension);
-				result.put(extension, count);
-			}else {
-				result.put(extension, 1);
-			}
-		}
-		
+		for(String extension : extensions.keySet()) {
+			result.put(extension, extensions.get(extension).size());
+		}		
 		
 		return result;
 	}
@@ -76,11 +70,9 @@ public class StatEngine {
 	public File[] getFilesWithExtension(String extension) {
 		ArrayList<File> result = new ArrayList<File>();
 		File[] files = new File[0];
-		if(extensions.containsValue(extension)) {
-			for(File f : extensions.keySet()) {
-				if(extensions.get(f).equals(extension)) {
-					result.add(f);
-				}
+		if(extensions.containsKey(extension)) {
+			for(File f : extensions.get(extension)) {
+				result.add(f);
 			}
 			
 			return result.toArray(files);
@@ -89,11 +81,14 @@ public class StatEngine {
 		}
 	}
 	
+	/**
+	 * @return Devuelve un mapa con las extensiones encontradas como llave y una lista de archivos con esa extension
+	 * como valor.
+	 */
+
 	
-	//TODO Rehacer estrucura de datos a una que permita manipulación de datos más eficiente.
-	
-	private HashMap<File, String> getFilesAndExtensions(){
-		HashMap<File, String> result = new HashMap<File, String>();
+	private HashMap<String, ArrayList<File>> getFilesAndExtensions(){
+		HashMap<String, ArrayList<File>> result = new HashMap<String, ArrayList<File>>();
 		String NO_EXTENSION = "<no extension>";
 		int MAX_EXTENSION_LENGTH = 11;	
 		
@@ -107,8 +102,14 @@ public class StatEngine {
 					extension = name[name.length-1];
 				}else {
 					extension = NO_EXTENSION;
-				}if(extension.length() < MAX_EXTENSION_LENGTH) {					
-					result.put(f, extension);	
+				}if(extension.length() < MAX_EXTENSION_LENGTH) {
+					if(result.containsKey(extension)) {
+						result.get(extension).add(f);
+					}else {
+						ArrayList<File> newExtension = new ArrayList<File>();
+						newExtension.add(f);
+						result.put(extension, newExtension);
+					}
 				}
 			}
 		}	
