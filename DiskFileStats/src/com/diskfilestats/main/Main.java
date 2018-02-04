@@ -14,8 +14,9 @@ public class Main {
 		StatEngine statEngine = new StatEngine(data);
 		
 		StatFile extensionFile = new StatFile("F:\\informes.txt", statEngine);
-		extensionFile.writeBiggestFilesReport(15, StatFile.UNIT_MEGABYTES);
-		extensionFile.writeFilesByExtension("docx");
+		extensionFile.setUnit(StatFile.UNIT_MEGABYTES);
+		extensionFile.writeBiggestFilesReport(15);
+		extensionFile.setUnit(StatFile.UNIT_KILOBYTES);
 		extensionFile.writeFilesByExtension("cfg");
 		extensionFile.writeFilesByExtension("py");
 		extensionFile.writeExtensionReport();

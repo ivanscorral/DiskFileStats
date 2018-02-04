@@ -17,11 +17,14 @@ public class StatFile {
 	private DecimalFormat df2;
 	private DecimalFormat df4;
 	
+	private int unit;
+	
 	public static final int UNIT_BYTES = 0;
 	public static final int UNIT_KILOBYTES = 1;
 	public static final int UNIT_MEGABYTES = 2;
 	public static final int UNIT_GIGABYTES = 3;
-
+	
+	
 	private String[][] units = {{"B"}, {"kB", "KiB"},{"MB", "MiB"}, {"GB", "GiB"}};
 	
 	//Initialize DecimalFormats
@@ -37,9 +40,11 @@ public class StatFile {
 	public StatFile(String path, StatEngine statEngine) {
 		statFile = new File(path);
 		if(statFile.exists()) statFile.delete();
-		
+		unit = UNIT_MEGABYTES;
 		this.statEngine = statEngine;
 	}
+	
+	
 	
 	public void writeExtensionReport() {
 		String toWrite = "-----FILE EXTENSION REPORT-----" + System.getProperty("line.separator");
@@ -57,7 +62,7 @@ public class StatFile {
 		write(toWrite);
 	}
 
-	public void writeBiggestFilesReport(int number, int unit) {
+	public void writeBiggestFilesReport(int number) {
 		File[] data = statEngine.getBiggestFiles(number);
 		
 		String toWrite = "-----" + number + " BIGGEST FILES REPORT "+ Arrays.toString(units[unit])+"-----" + System.getProperty("line.separator");
@@ -86,10 +91,10 @@ public class StatFile {
 		File[] files = statEngine.getFilesWithExtension(extension);
 		
 		for(File f : files) {
-			double[] fileSizes = getConvertedFileSize(f, UNIT_MEGABYTES);
+			double[] fileSizes = getConvertedFileSize(f, unit);
 			DecimalFormat df = new DecimalFormat("#.####");
 			df.setRoundingMode(RoundingMode.CEILING);	
-			toWrite += f.getAbsolutePath() + " (" + df2.format(fileSizes[0]) + units[UNIT_MEGABYTES][0] +"/" + df2.format(fileSizes[1]) + units[UNIT_MEGABYTES][0] + ")" + System.getProperty("line.separator");
+			toWrite += f.getAbsolutePath() + " (" + df2.format(fileSizes[0]) + units[unit][0] +"/" + df2.format(fileSizes[1]) + units[unit][1] + ")" + System.getProperty("line.separator");
 		}
 		
 		write(toWrite);
@@ -124,5 +129,11 @@ public class StatFile {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
+	}
+
+	public void setUnit(int unit) {
+		if(!(unit > UNIT_GIGABYTES || unit < UNIT_BYTES)) {
+			this.unit = unit;
+		}
 	}
 }
